@@ -1,0 +1,44 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack serve --open --config webpack.dev.js",
+    "deploy": "git subtree push --prefix dist origin gh-pages",
+    "lint": "eslint",
+    "prettier": "prettier . --write"
+  },
+  "author": "Łukasz Pasternak",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.27.1",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.1",
+    "@eslint/css": "^0.7.0",
+    "@eslint/js": "^9.26.0",
+    "@eslint/json": "^0.12.0",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.2",
+    "eslint": "^9.26.0",
+    "eslint-plugin-import": "^2.31.0",
+    "globals": "^16.0.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "prettier": "3.5.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1",
+    "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "core-js": "^3.42.0",
+    "date-fns": "^4.1.0",
+    "dompurify": "^3.2.5",
+    "simplebar": "^6.3.0"
+  }
+}
