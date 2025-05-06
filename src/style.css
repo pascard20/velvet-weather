@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-wrapper {
+  max-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto auto;
+
+  img {
+    width: 3rem;
+  }
+}
+
+.header__city-name {
+  font-size: 2.5rem;
+  margin-bottom: -1rem;
+  font-weight: 600;
+}
+
+.header__city-info {
+  grid-column: 1;
+  grid-row: 2;
+  font-weight: 300;
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.header__form {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: flex-end;
+}
+
+.header__suntime {
+  display: flex;
+  gap: 1rem;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.header__description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  font-weight: 200;
+  letter-spacing: 0.015em;
+  grid-column: 1 / span 2;
+  grid-row: 3;
+}
+
+.divider {
+  margin: 0 0 2rem;
+}
+
+.main__current-conditions {
+  display: grid;
+  grid-template-columns: repeat(auto, 4);
+  gap: 1rem;
+
+  & > * {
+    border: 1px solid red;
+  }
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* max-height: 500px; */
+}
+
+.main__weather-icon {
+  grid-row: 1 / span 4;
+}
+
+.main__conditions {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.main__temperature {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+}
+
+.main__feels-like {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+.main__air-pressure {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.main__wind-speed {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.main__humidity {
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.main__rain-chance {
+  grid-column: 3;
+  grid-row: 4;
+}
+
+.main__amount {
+  grid-column: 4;
+}
+
+.main__hourly-forecast {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__forecast-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__forecast-icon {
+  width: 4rem;
+}
+
+/* ---------------------------------- UTILS --------------------------------- */
+
+.bolder {
+  font-weight: bolder;
+}
+
+.number {
+  font-family: "Space Mono", monospace;
+}

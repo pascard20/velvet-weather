@@ -3,7 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Velvet Weather</title>
   </head>
-  <body></body>
+  <body>
+    <div class="app-wrapper">
+      <header class="header">
+        <h1 class="header__city-name">Warszawa</h1>
+        <h2 class="header__city-info">woj. mazowieckie, Polska</h2>
+        <form class="header__form">
+          <input class="header__input" type="text" />
+          <button class="header__button" type="submit">Submit</button>
+        </form>
+        <section class="header__description">
+          <p>Weather for Wednesday, May 7th, 2025 at 12:35 PM</p>
+          <div class="header__suntime">
+            <div class="header__sunrise number"><p>6:30</p></div>
+            <div class="header__sunset number"><p>21:20</p></div>
+          </div>
+        </section>
+      </header>
+      <hr class="divider" />
+      <main class="main">
+        <section class="main__current-conditions">
+          <img
+            src="../svg/weather-icons/clear-day.svg"
+            class="main__weather-icon"
+          />
+          <p class="main__conditions">Clear sky</p>
+          <h2 class="main__temperature number">10°C</h2>
+          <p class="main__feels-like">
+            Feels like <span class="bolder number">9°C</span>
+          </p>
+          <p class="main__air-pressure">Air pressure</p>
+          <p class="main__air-pressure main__amount number bolder">1020 hPa</p>
+          <p class="main__wind-speed">Wind speed</p>
+          <p class="main__wind-speed main__amount number bolder">14 km/h</p>
+          <p class="main__humidity">Humidity</p>
+          <p class="main__humidity main__amount number bolder">30%</p>
+          <p class="main__rain-chance">Rain chance</p>
+          <p class="main__rain-chance main__amount number bolder">10%</p>
+        </section>
+        <section class="main__hourly-forecast">
+          <div class="main__forecast-item">
+            <p class="main__forecast-time number">13:00</p>
+            <img
+              src="../svg/weather-icons/clear-day.svg"
+              class="main__forecast-icon"
+            />
+            <p class="main__forecast-temperature number">12°C</p>
+          </div>
+          <div class="main__forecast-item">
+            <p class="main__forecast-time number">15:00</p>
+            <img
+              src="../svg/weather-icons/clear-day.svg"
+              class="main__forecast-icon"
+            />
+            <p class="main__forecast-temperature number">13°C</p>
+          </div>
+          <div class="main__forecast-item">
+            <p class="main__forecast-time number">17:00</p>
+            <img
+              src="../svg/weather-icons/clear-day.svg"
+              class="main__forecast-icon"
+            />
+            <p class="main__forecast-temperature number">11°C</p>
+          </div>
+          <div class="main__forecast-item">
+            <p class="main__forecast-time number">19:00</p>
+            <img
+              src="../svg/weather-icons/partly-cloudy-day.svg"
+              class="main__forecast-icon"
+            />
+            <p class="main__forecast-temperature number">9°C</p>
+          </div>
+          <div class="main__forecast-item">
+            <p class="main__forecast-time number">21:00</p>
+            <img
+              src="../svg/weather-icons/partly-cloudy-night.svg"
+              class="main__forecast-icon"
+            />
+            <p class="main__forecast-temperature number">8°C</p>
+          </div>
+          <div class="main__forecast-item">
+            <p class="main__forecast-time number">23:00</p>
+            <img
+              src="../svg/weather-icons/partly-cloudy-night.svg"
+              class="main__forecast-icon"
+            />
+            <p class="main__forecast-temperature number">6°C</p>
+          </div>
+          <div class="main__forecast-item">
+            <p class="main__forecast-time number">01:00</p>
+            <img
+              src="../svg/weather-icons/clear-night.svg"
+              class="main__forecast-icon"
+            />
+            <p class="main__forecast-temperature number">4°C</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
