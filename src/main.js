@@ -59,6 +59,11 @@ const getWeatherData = async (city) => {
     };
 
     global.vars.cachedData = weatherData;
+    if (!global.vars.areElementsActive) {
+      global.elemToDeactivate.forEach((element) => {
+        element.classList.remove("inactive");
+      });
+    }
     return weatherData;
   } catch (error) {
     console.error("Failed to fetch weather data:", error);
@@ -194,28 +199,11 @@ global.header.unitSwitch.addEventListener("click", handleUnitChange);
     [global.header.sunset, "sunset"],
     [global.header.sunrise, "sunrise"],
     [global.header.button, "magnifying-glass"],
-    [global.main.weatherIcon, "clear-day"],
     [global.main.airPressure, "barometer"],
     [global.main.windSpeed, "windsock"],
     [global.main.humidity, "humidity"],
     [global.main.cloudCover, "cloudy"],
   ]);
-
-  const mainForecastMap = [
-    "clear-day",
-    "clear-day",
-    "clear-day",
-    "partly-cloudy-day",
-    "partly-cloudy-night",
-    "clear-night",
-    "clear-night",
-  ];
-
-  document
-    .querySelectorAll(".main__forecast-item")
-    .forEach((element, index) => {
-      insertSVG(element, getSVG(mainForecastMap[index]));
-    });
 
   iconMap.forEach((iconName, element) => {
     insertSVG(element, getSVG(iconName));
@@ -241,6 +229,13 @@ global.header.unitSwitch.addEventListener("click", handleUnitChange);
   const index = Math.floor(Math.random() * cities.length);
 
   const initData = await getWeatherData(cities[index]);
-  printData(initData);
+  if (initData) {
+    global.vars.areElementsActive = true;
+    printData(initData);
+  } else {
+    global.elemToDeactivate.forEach((element) => {
+      element.classList.add("inactive");
+    });
+  }
   global.elem.appWrapper.classList.add("active");
 })();

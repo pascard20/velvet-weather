@@ -46,7 +46,16 @@ const values = {
 const vars = {
   useAmericanUnits: header.unitSwitch.checked,
   cachedData: null,
+  areElementsActive: false,
 };
+
+const elemToDeactivate = [
+  select(".main"),
+  select(".divider"),
+  select(".header__city-name"),
+  select(".header__city-info"),
+  select(".header__description"),
+];
 
 export default {
   vars,
@@ -54,4 +63,5 @@ export default {
   main,
   values,
   elem,
+  elemToDeactivate,
 };
