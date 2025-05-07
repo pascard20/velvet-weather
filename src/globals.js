@@ -22,6 +22,7 @@ const header = {
   cityName: select(".header__city-name"),
   cityInfo: select(".header__city-info"),
   unitSwitch: select(".header__unit-switch"),
+  loadAnimation: select(".header__load-animation"),
 };
 
 const main = {

@@ -10,6 +10,8 @@ const getWeatherData = async (city) => {
     throw new Error("City required");
   }
 
+  global.header.loadAnimation.classList.add("active");
+
   try {
     const url = new URL(
       "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline"
@@ -64,9 +66,11 @@ const getWeatherData = async (city) => {
         element.classList.remove("inactive");
       });
     }
+    global.header.loadAnimation.classList.remove("active");
     return weatherData;
   } catch (error) {
     console.error("Failed to fetch weather data:", error);
+    global.header.loadAnimation.classList.remove("active");
     return null;
   }
 };
