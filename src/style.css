@@ -13,7 +13,7 @@ body {
   align-items: center;
   border-color: white;
   color: white;
-  padding: 2rem;
+  padding: 2rem 2rem 1rem;
   font-size: 1.25rem;
 }
 
@@ -457,6 +457,60 @@ input:checked + .slider > .slider-inner {
   top: 50%;
   transform: translate(-50%, -50%);
   font-weight: bold;
+}
+
+/* --------------------------------- FOOTER --------------------------------- */
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  font-size: 1rem;
+  flex: 1;
+  color: white;
+  margin-top: 1rem;
+  gap: 1.5rem;
+
+  a,
+  p {
+    display: inline-block;
+    opacity: 0.6;
+  }
+
+  a {
+    transition: 0.15s;
+  }
+
+  a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+}
+
+.footer__name {
+  transition: 0.1s;
+  /* margin-left: -0.675rem; */
+}
+
+.footer__name:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+.footer__icon {
+  font-size: 1.25rem;
+  transition: 0.25s;
+  transform: scale(1);
+  margin-bottom: -0.25rem;
+  margin-left: 0.125rem;
+
+  .svg-icon svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.footer__icon:hover {
+  transform: scale(1.15);
 }
 
 /* ---------------------------------- UTILS --------------------------------- */

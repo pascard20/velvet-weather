@@ -10,6 +10,7 @@ const selectMultiple = (baseSelector, count) => {
 
 const elem = {
   appWrapper: select(".app-wrapper"),
+  footerLink: select(".footer__icon"),
 };
 
 const header = {

@@ -207,6 +207,7 @@ global.header.unitSwitch.addEventListener("click", handleUnitChange);
     [global.main.windSpeed, "windsock"],
     [global.main.humidity, "humidity"],
     [global.main.cloudCover, "cloudy"],
+    [global.elem.footerLink, "github"],
   ]);
 
   iconMap.forEach((iconName, element) => {
