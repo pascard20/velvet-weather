@@ -3,7 +3,7 @@ import "./style.css";
 import { convertTemperature, convertSpeed } from "./utils.js";
 import global from "./globals.js";
 import { initSVGLoader, insertSVG, getSVG } from "./svgLoader.js";
-import { getFormattedWeatherDate } from "./helpers.js";
+import { getFormattedWeatherDate, formatDateInTimezone } from "./helpers.js";
 
 const getWeatherData = async (city) => {
   if (!city) {
@@ -38,12 +38,15 @@ const getWeatherData = async (city) => {
     const cityName = addressParts[0];
     const cityDescription = addressParts.slice(1, 3).join(", ");
 
+    console.log(data);
+
     const weatherData = {
       city: cityName,
       description: cityDescription,
       sunrise: data.currentConditions.sunrise,
       sunset: data.currentConditions.sunset,
-      time: data.currentConditions.datetime,
+      date: new Date(data.currentConditions.datetimeEpoch * 1000),
+      timezone: data.timezone,
       feelsLike: data.currentConditions.feelslike,
       cloudCover: data.currentConditions.cloudcover,
       humidity: data.currentConditions.humidity,
@@ -65,9 +68,11 @@ const getWeatherData = async (city) => {
 
 const printData = (data) => {
   if (data) {
-    console.log(data);
-    global.header.descriptionString.textContent = getFormattedWeatherDate();
-    const startHour = new Date().getHours() + 1;
+    const offsetDate = formatDateInTimezone(data.date, data.timezone);
+
+    global.header.descriptionString.textContent =
+      getFormattedWeatherDate(offsetDate);
+    const startHour = offsetDate.getHours() + 1;
 
     const dataMap = new Map([
       ["temperature", data.temperature],
@@ -215,6 +220,27 @@ global.header.unitSwitch.addEventListener("click", handleUnitChange);
   iconMap.forEach((iconName, element) => {
     insertSVG(element, getSVG(iconName));
   });
-})();
 
-printData();
+  const cities = [
+    "Tokyo",
+    "New York",
+    "Paris",
+    "London",
+    "Sydney",
+    "Rio de Janeiro",
+    "Cape Town",
+    "Istanbul",
+    "Warszawa",
+    "Madrid",
+    "Rome",
+    "Singapore",
+    "Berlin",
+    "Buenos Aires",
+  ];
+
+  const index = Math.floor(Math.random() * cities.length);
+
+  const initData = await getWeatherData(cities[index]);
+  printData(initData);
+  global.elem.appWrapper.classList.add("active");
+})();

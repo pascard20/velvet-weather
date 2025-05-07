@@ -55,7 +55,8 @@ const fetchSVG = async (url) => {
 
 const disableAnimations = (svgElement) => {
   if (!svgElement) return;
-  const animations = svgElement.querySelectorAll("animateTransform");
+
+  const animations = svgElement.querySelectorAll("animate, animateTransform");
   animations.forEach((anim) => {
     anim.remove();
   });

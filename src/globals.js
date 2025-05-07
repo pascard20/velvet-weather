@@ -8,6 +8,10 @@ const selectMultiple = (baseSelector, count) => {
   return result;
 };
 
+const elem = {
+  appWrapper: select(".app-wrapper"),
+};
+
 const header = {
   form: select(".header__form"),
   input: select(".header__input"),
@@ -49,4 +53,5 @@ export default {
   header,
   main,
   values,
+  elem,
 };
