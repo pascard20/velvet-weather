@@ -60,3 +60,8 @@ export const convertTemperature = (degrees, inputUnit, targetUnit) => {
 
   return Math.round(result * 100) / 100;
 };
+
+export const importFileAsText = async (url) => {
+  const response = await fetch(url);
+  return await response.text();
+};
