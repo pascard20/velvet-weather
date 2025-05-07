@@ -9,13 +9,14 @@
     <div class="app-wrapper">
       <header class="header">
         <h1 class="header__city-name">Warszawa</h1>
-        <h2 class="header__city-info">woj. mazowieckie, Polska</h2>
-        <form class="header__form">
+        <h2 class="ellipsis header__city-info">woj. mazowieckie, Polska</h2>
+        <form class="header__form" autocomplete="off">
           <div class="header__input-wrapper">
             <input
               class="header__input"
               type="text"
               name="location"
+              id="location"
               placeholder=""
             />
             <label class="header__input-label" for="location">Location</label>
@@ -24,6 +25,19 @@
             <div class="svg-icon"></div>
           </button>
         </form>
+        <div class="header__switch">
+          <p>Units</p>
+          <label class="switch">
+            <input class="header__unit-switch" type="checkbox" />
+            <span class="slider round">
+              <div class="slider-units no-select">
+                <div>C</div>
+                <div>F</div>
+              </div>
+              <div class="slider-inner"></div>
+            </span>
+          </label>
+        </div>
         <section class="header__description">
           <p class="header__description-string">
             Weather for Wednesday, May 7th, 2025 at 12:35 PM
@@ -48,75 +62,121 @@
           </div>
           <p class="main__current-item main__conditions">Clear sky</p>
           <h2 class="main__current-item main__temperature">
-            <span class="bolder">10</span>°C
+            <span class="bolder"
+              ><span id="value__temperature">10</span>°<span
+                class="temperature-unit"
+                >C</span
+              ></span
+            >
           </h2>
           <p class="main__current-item main__feels-like">
-            Feels like<span class="bolder">9°C</span>
+            Feels like<span class="bolder"
+              ><span id="value__feelslike">9</span>°<span
+                class="temperature-unit"
+                >C</span
+              ></span
+            >
           </p>
           <div class="main__column3 main__current-item main__air-pressure">
             <div class="svg-icon"></div>
             <p>Air pressure</p>
           </div>
           <p class="main__current-item main__air-pressure main__amount bolder">
-            1020 hPa
+            <span id="value__pressure">1020</span> hPa
           </p>
           <div class="main__column3 main__current-item main__wind-speed">
             <div class="svg-icon"></div>
             <p>Wind speed</p>
           </div>
           <p class="main__current-item main__wind-speed main__amount bolder">
-            14 km/h
+            <span id="value__windSpeed">14</span>
+            <span class="speed-unit">km/h</span>
           </p>
           <div class="main__column3 main__current-item main__humidity">
             <div class="svg-icon"></div>
             <p>Humidity</p>
           </div>
           <p class="main__current-item main__humidity main__amount bolder">
-            30%
+            <span id="value__humidity">30</span>%
           </p>
-          <div class="main__column3 main__current-item main__rain-chance">
+          <div class="main__column3 main__current-item main__cloud-cover">
             <div class="svg-icon"></div>
-            <p>Rain chance</p>
+            <p>Cloud cover</p>
           </div>
-          <p class="main__current-item main__rain-chance main__amount bolder">
-            10%
+          <p class="main__current-item main__cloud-cover main__amount bolder">
+            <span id="value__cloudCover">10</span>%
           </p>
         </section>
         <section class="main__hourly-forecast">
-          <div class="main__forecast-item">
-            <p class="main__forecast-time number">13:00</p>
-            <div class="svg-icon animated"></div>
-            <p class="main__forecast-temperature number">12°C</p>
+          <div class="main__forecast-item" id="main__forecast-item-0">
+            <p class="value__forecast-time main__forecast-time number">13:00</p>
+            <div class="svg-icon"></div>
+            <p class="main__forecast-temperature number">
+              <span class="value__forecast-temperature">12</span>°<span
+                class="temperature-unit"
+                >C</span
+              >
+            </p>
           </div>
-          <div class="main__forecast-item">
-            <p class="main__forecast-time number">15:00</p>
-            <div class="svg-icon animated"></div>
-            <p class="main__forecast-temperature number">13°C</p>
+          <div class="main__forecast-item" id="main__forecast-item-1">
+            <p class="value__forecast-time main__forecast-time number">15:00</p>
+            <div class="svg-icon"></div>
+            <p class="main__forecast-temperature number">
+              <span class="value__forecast-temperature">13</span>°<span
+                class="temperature-unit"
+                >C</span
+              >
+            </p>
           </div>
-          <div class="main__forecast-item">
-            <p class="main__forecast-time number">17:00</p>
-            <div class="svg-icon animated"></div>
-            <p class="main__forecast-temperature number">11°C</p>
+          <div class="main__forecast-item" id="main__forecast-item-2">
+            <p class="value__forecast-time main__forecast-time number">17:00</p>
+            <div class="svg-icon"></div>
+            <p class="main__forecast-temperature number">
+              <span class="value__forecast-temperature">11</span>°<span
+                class="temperature-unit"
+                >C</span
+              >
+            </p>
           </div>
-          <div class="main__forecast-item">
-            <p class="main__forecast-time number">19:00</p>
-            <div class="svg-icon animated"></div>
-            <p class="main__forecast-temperature number">9°C</p>
+          <div class="main__forecast-item" id="main__forecast-item-3">
+            <p class="value__forecast-time main__forecast-time number">19:00</p>
+            <div class="svg-icon"></div>
+            <p class="main__forecast-temperature number">
+              <span class="value__forecast-temperature">9</span>°<span
+                class="temperature-unit"
+                >C</span
+              >
+            </p>
           </div>
-          <div class="main__forecast-item">
-            <p class="main__forecast-time number">21:00</p>
-            <div class="svg-icon animated"></div>
-            <p class="main__forecast-temperature number">8°C</p>
+          <div class="main__forecast-item" id="main__forecast-item-4">
+            <p class="value__forecast-time main__forecast-time number">21:00</p>
+            <div class="svg-icon"></div>
+            <p class="main__forecast-temperature number">
+              <span class="value__forecast-temperature">8</span>°<span
+                class="temperature-unit"
+                >C</span
+              >
+            </p>
           </div>
-          <div class="main__forecast-item">
-            <p class="main__forecast-time number">23:00</p>
-            <div class="svg-icon animated"></div>
-            <p class="main__forecast-temperature number">6°C</p>
+          <div class="main__forecast-item" id="main__forecast-item-5">
+            <p class="value__forecast-time main__forecast-time number">23:00</p>
+            <div class="svg-icon"></div>
+            <p class="main__forecast-temperature number">
+              <span class="value__forecast-temperature">6</span>°<span
+                class="temperature-unit"
+                >C</span
+              >
+            </p>
           </div>
-          <div class="main__forecast-item">
-            <p class="main__forecast-time number">01:00</p>
-            <div class="svg-icon animated"></div>
-            <p class="main__forecast-temperature number">4°C</p>
+          <div class="main__forecast-item" id="main__forecast-item-6">
+            <p class="value__forecast-time main__forecast-time number">01:00</p>
+            <div class="svg-icon"></div>
+            <p class="main__forecast-temperature number">
+              <span class="value__forecast-temperature">4</span>°<span
+                class="temperature-unit"
+                >C</span
+              >
+            </p>
           </div>
         </section>
       </main>

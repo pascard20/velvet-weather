@@ -9,6 +9,7 @@ body {
   font-family: "Space Grotesk", sans-serif;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   border-color: white;
   color: white;
@@ -31,10 +32,13 @@ body::before {
 .app-wrapper {
   max-width: 1024px;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   padding: 2rem 2rem;
+  justify-content: space-between;
+  flex-grow: 1;
+  max-height: 800px;
 }
 
 .svg-icon {
@@ -51,8 +55,8 @@ body::before {
 }
 
 .header__city-name {
-  font-size: 2.5em;
-  /* margin-bottom: -1rem; */
+  font-size: 3em;
+  margin-bottom: -0.375em;
   font-weight: 600;
 }
 
@@ -60,8 +64,8 @@ body::before {
   grid-column: 1;
   grid-row: 2;
   font-weight: 300;
-  font-size: 1em;
-  margin-top: -0.5rem;
+  font-size: 1.25em;
+  margin-top: 0.5rem;
   margin-bottom: 0.75rem;
   margin-left: 0.125rem;
 }
@@ -77,6 +81,8 @@ body::before {
 
   .header__input-wrapper {
     position: relative;
+    cursor: text;
+    margin-left: 2rem;
   }
 
   .header__button {
@@ -89,7 +95,7 @@ body::before {
     align-items: center;
     text-align: center;
     color: #513ff8;
-    border-radius: 10%;
+    border-radius: 0.75rem;
     opacity: 0.9;
     transition: 0.15s;
 
@@ -116,6 +122,7 @@ body::before {
     left: 0;
     transition: 0.15s;
     color: rgba(255, 255, 255, 0.5);
+    cursor: text;
   }
 
   .header__input {
@@ -170,6 +177,7 @@ body::before {
   grid-row: 3;
   font-size: 0.875em;
   opacity: 0.7;
+  margin-top: 0.25rem;
   margin-bottom: -0.675rem;
 }
 
@@ -205,7 +213,7 @@ body::before {
 .main__current-item {
   display: flex;
   align-items: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .main__weather-icon {
@@ -307,12 +315,120 @@ body::before {
   }
 }
 
+/* --------------------------------- SWITCH --------------------------------- */
+
+.header__switch {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: flex-end;
+  justify-self: end;
+  margin-bottom: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+  transition: 0.15s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+}
+
+/* The switch - the box around the slider */
+.switch {
+  font-size: 1rem;
+  position: relative;
+  display: inline-block;
+  width: 2.75em;
+  height: 1.675em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider-inner {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #72b9d5;
+  font-weight: bold;
+  height: 1.25em;
+  width: 1.25em;
+  left: 0.25em;
+  bottom: calc(0.25em - 1px);
+  background-color: #4f3def;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: white;
+  color: white;
+}
+
+input:checked + .slider > .slider-inner {
+  -webkit-transform: translateX(1em);
+  -ms-transform: translateX(1em);
+  transform: translateX(1em);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 0.675em;
+}
+
+.slider.round .slider-inner {
+  border-radius: 0.525em;
+}
+
+.slider-units {
+  display: flex;
+  position: absolute;
+  gap: 0.425rem;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+
 /* ---------------------------------- UTILS --------------------------------- */
 
 .bolder {
   font-weight: bolder;
 }
 
-.number {
-  /* font-family: "Space Mono", monospace; */
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }

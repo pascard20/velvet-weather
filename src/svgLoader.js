@@ -36,7 +36,6 @@ const importAllSVGs = async () => {
 
 // Fetch actual SVG content from URL
 const fetchSVG = async (url) => {
-  console.log(url);
   if (url.startsWith("<svg")) return url;
   if (svgCache[url]) return svgCache[url];
 
@@ -96,4 +95,4 @@ const initSVGLoader = async () => {
   };
 };
 
-export { initSVGLoader, insertSVG };
+export { getSVG, initSVGLoader, insertSVG };

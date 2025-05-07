@@ -24,6 +24,19 @@ export const sanitize = (baseHTML) => {
   return DOMPurify.sanitize(baseHTML);
 };
 
+export const convertSpeed = (speed, inputUnit, targetUnit) => {
+  const conversionMultiplier = 1.60934;
+  const conversionRates = {
+    mph: { kph: 1 * conversionMultiplier },
+    kph: { mph: 1 / conversionMultiplier },
+  };
+
+  if (inputUnit === targetUnit) return speed;
+
+  const rate = conversionRates[inputUnit]?.[targetUnit];
+  return rate ? Math.round(speed * rate) : speed;
+};
+
 export const convertTemperature = (degrees, inputUnit, targetUnit) => {
   const units = ["C", "F", "K"];
   if (!units.includes(inputUnit) || !units.includes(targetUnit)) {
@@ -38,7 +51,7 @@ export const convertTemperature = (degrees, inputUnit, targetUnit) => {
       case "C":
         return value + 273.15;
       case "F":
-        return value * (5 / 9) + 459.67;
+        return (value - 32) * (5 / 9) + 273.15;
       case "K":
         return value;
     }
