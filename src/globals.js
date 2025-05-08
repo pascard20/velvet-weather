@@ -11,6 +11,7 @@ const selectMultiple = (baseSelector, count) => {
 const elem = {
   appWrapper: select(".app-wrapper"),
   footerLink: select(".footer__icon"),
+  footer: select(".footer"),
 };
 
 const header = {
@@ -49,6 +50,7 @@ const vars = {
   useAmericanUnits: header.unitSwitch.checked,
   cachedData: null,
   areElementsActive: false,
+  forecastHoursOffset: 3,
 };
 
 const elemToDeactivate = [

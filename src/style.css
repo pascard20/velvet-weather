@@ -53,6 +53,10 @@ body::before {
   justify-content: space-between;
   flex-grow: 1;
   max-height: 800px;
+}
+
+.app-wrapper,
+.footer {
   transform: translateY(1rem);
   opacity: 0;
   transition:

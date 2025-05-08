@@ -4,17 +4,18 @@ import { convertTemperature, convertSpeed } from "./utils.js";
 import global from "./globals.js";
 import { initSVGLoader, insertSVG, getSVG } from "./svgLoader.js";
 import { getFormattedWeatherDate, formatDateInTimezone } from "./helpers.js";
+import printData from "./printData.js";
 
 const getWeatherData = async (city) => {
-  if (!city) {
-    throw new Error("City required");
+  if (!city?.trim()) {
+    return Promise.reject(new Error("City name is required"));
   }
 
   global.header.loadAnimation.classList.add("active");
 
   try {
     const url = new URL(
-      "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline"
+      "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline",
     );
     url.pathname += `/${encodeURIComponent(city)}`;
     url.search = new URLSearchParams({
@@ -27,9 +28,7 @@ const getWeatherData = async (city) => {
 
     if (!response.ok) {
       throw new Error(
-        response.status === 400
-          ? "Invalid location"
-          : `API error (${response.status})`
+        response.status === 400 ? "Invalid location" : `API error (${response.status})`,
       );
     }
 
@@ -37,14 +36,10 @@ const getWeatherData = async (city) => {
 
     // Location data
     const addressParts = data.resolvedAddress.split(", ");
-    const cityName = addressParts[0];
-    const cityDescription = addressParts.slice(1, 3).join(", ");
-
-    console.log(data);
 
     const weatherData = {
-      city: cityName,
-      description: cityDescription,
+      city: addressParts[0],
+      description: addressParts.slice(1, 3).join(", "),
       sunrise: data.currentConditions.sunrise,
       sunset: data.currentConditions.sunset,
       date: new Date(data.currentConditions.datetimeEpoch * 1000),
@@ -66,82 +61,12 @@ const getWeatherData = async (city) => {
         element.classList.remove("inactive");
       });
     }
-    global.header.loadAnimation.classList.remove("active");
     return weatherData;
   } catch (error) {
     console.error("Failed to fetch weather data:", error);
-    global.header.loadAnimation.classList.remove("active");
     return null;
-  }
-};
-
-const printData = (data) => {
-  if (data) {
-    const offsetDate = formatDateInTimezone(data.date, data.timezone);
-
-    global.header.descriptionString.textContent =
-      getFormattedWeatherDate(offsetDate);
-    const startHour = offsetDate.getHours() + 1;
-
-    const dataMap = new Map([
-      ["temperature", data.temperature],
-      ["feelsLike", data.feelsLike],
-      ["pressure", data.pressure],
-      ["windSpeed", data.windSpeed],
-      ["humidity", data.humidity],
-      ["cloudCover", data.cloudCover],
-    ]);
-
-    insertSVG(global.main.weatherIcon, getSVG(data.icon));
-
-    dataMap.forEach((dataValue, elementName) => {
-      global.values[elementName].textContent = Math.round(dataValue);
-    });
-
-    // Sunrise and sunset time
-    const findSuntimeElement = (suntimeType) => {
-      return global.header[suntimeType].querySelector(".header__suntime-time");
-    };
-
-    const suntimeElements = new Map([
-      [data.sunrise, findSuntimeElement("sunrise")],
-      [data.sunset, findSuntimeElement("sunset")],
-    ]);
-
-    suntimeElements.forEach((element, value) => {
-      element.textContent = value.split(":").slice(0, 2).join(":");
-    });
-
-    const units = new Map([
-      [["F", "C"], document.querySelectorAll(".temperature-unit")],
-      [["mph", "km/h"], document.querySelectorAll(".speed-unit")],
-    ]);
-    const isAmerican = global.vars.useAmericanUnits;
-
-    units.forEach((elements, unitChoice) => {
-      elements.forEach((element) => {
-        element.textContent = isAmerican ? unitChoice[0] : unitChoice[1];
-      });
-    });
-
-    global.header.cityName.textContent = data.city;
-    global.header.cityInfo.textContent = data.description;
-
-    global.main.conditions.textContent = data.conditions;
-    global.main.forecastItems.forEach((item, index) => {
-      const currentHour = startHour + 3 + 3 * index;
-      const temperatureElement = item.querySelector(
-        ".value__forecast-temperature"
-      );
-      const timeElement = item.querySelector(".value__forecast-time");
-
-      temperatureElement.textContent = Math.round(data.hours[currentHour].temp);
-      timeElement.textContent = data.hours[currentHour].datetime
-        .split(":")
-        .splice(0, 2)
-        .join(":");
-      insertSVG(item, getSVG(data.hours[currentHour].icon));
-    });
+  } finally {
+    global.header.loadAnimation.classList.remove("active");
   }
 };
 
@@ -162,25 +87,21 @@ const handleUnitChange = () => {
   data.feelsLike = convertTemperature(
     data.feelsLike,
     units.temperature.input,
-    units.temperature.output
+    units.temperature.output,
   );
   data.temperature = convertTemperature(
     data.temperature,
     units.temperature.input,
-    units.temperature.output
+    units.temperature.output,
   );
   data.hours.forEach((hour) => {
     hour.temp = convertTemperature(
       hour.temp,
       units.temperature.input,
-      units.temperature.output
+      units.temperature.output,
     );
   });
-  data.windSpeed = convertSpeed(
-    data.windSpeed,
-    units.speed.input,
-    units.speed.output
-  );
+  data.windSpeed = convertSpeed(data.windSpeed, units.speed.input, units.speed.output);
 
   printData(data);
 };
@@ -242,5 +163,7 @@ global.header.unitSwitch.addEventListener("click", handleUnitChange);
       element.classList.add("inactive");
     });
   }
-  global.elem.appWrapper.classList.add("active");
+  [global.elem.appWrapper, global.elem.footer].forEach((element) => {
+    element.classList.add("active");
+  });
 })();
