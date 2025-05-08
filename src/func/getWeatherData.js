@@ -41,7 +41,8 @@ const fetchWeatherData = async (city) => {
 
 export default async (city) => {
   if (!city?.trim()) {
-    return Promise.reject(new Error("City name is required"));
+    console.warn("City name is required");
+    return false;
   }
 
   setLoadingState(true);

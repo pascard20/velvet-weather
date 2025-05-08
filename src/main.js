@@ -5,7 +5,8 @@ import global from "./utils/globals.js";
 import printData from "./func/printData.js";
 import initApp from "./func/initApp.js";
 import getWeatherData from "./func/getWeatherData.js";
-import { changeUnits, escapeHTML, sanitize } from "./utils/helpers.js";
+import { changeUnits } from "./utils/helpers.js";
+import { escapeHTML, sanitize } from "./utils/utils.js";
 
 // Handlers
 const handleFormSubmit = async (event) => {
