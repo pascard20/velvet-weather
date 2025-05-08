@@ -5,12 +5,13 @@ import global from "./utils/globals.js";
 import printData from "./func/printData.js";
 import initApp from "./func/initApp.js";
 import getWeatherData from "./func/getWeatherData.js";
-import { changeUnits } from "./utils/helpers.js";
+import { changeUnits, escapeHTML, sanitize } from "./utils/helpers.js";
 
 // Handlers
 const handleFormSubmit = async (event) => {
   event.preventDefault();
-  const place = global.header.input.value.trim();
+  const inputValue = global.header.input.value.trim();
+  const place = sanitize(escapeHTML(inputValue));
   const weatherData = await getWeatherData(place);
   printData(weatherData);
 };
