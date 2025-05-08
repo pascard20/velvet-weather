@@ -107,6 +107,40 @@ body::before {
   margin-left: 0.125rem;
 }
 
+.load-animation {
+  border-radius: 50%;
+  opacity: 0;
+  animation: loadSpin var(--transitionLong) linear infinite;
+  transition: var(--transitionVeryShort);
+  border-style: solid;
+  border-color: white;
+  border-left-color: transparent;
+
+  &.active {
+    opacity: 0.65;
+  }
+}
+
+.header__load-animation {
+  width: 1.25em;
+  height: 1.25em;
+  border-width: 2px;
+
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.body__load-animation {
+  width: 4em;
+  height: 4em;
+  border-width: 5px;
+  border-left-color: transparent;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .header__form {
   grid-column: 2;
   grid-row: 1;
@@ -116,23 +150,6 @@ body::before {
   gap: 0.5rem;
   align-items: flex-end;
   margin-left: 3rem;
-
-  .header__load-animation {
-    width: 1.25em;
-    height: 1.25em;
-    border: 3px solid white;
-    border-radius: 50%;
-    border-left-color: transparent;
-    margin-right: 0.25rem;
-    margin-bottom: 0.25rem;
-    opacity: 0;
-    animation: loadSpin var(--transitionLong) linear infinite;
-    transition: var(--transitionVeryShort);
-
-    &.active {
-      opacity: 0.8;
-    }
-  }
 
   .header__input-wrapper {
     position: relative;
@@ -488,12 +505,19 @@ input:checked + .slider > .slider-inner {
   color: white;
   margin-top: 0.25em;
   gap: 1.5em;
-  transition: var(--transitionMedium) font-size;
+  transition:
+    var(--transitionMedium) font-size,
+    var(--transitionLong) transform,
+    var(--transitionLong) opacity;
 
   a,
   p {
     display: inline-block;
     opacity: 0.6;
+  }
+
+  p {
+    margin-right: 0.25em;
   }
 
   a {

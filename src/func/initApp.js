@@ -52,8 +52,13 @@ const selectRandomCity = () => {
   return cities[index];
 };
 
+const toggleLoadingVisibility = () => {
+  global.elem.bodyLoadAnimation.classList.toggle("active");
+};
+
 export default async () => {
   try {
+    toggleLoadingVisibility();
     await initSVGLoader();
     loadInterfaceIcons();
 
@@ -71,4 +76,5 @@ export default async () => {
   }
 
   setAppVisibility(true);
+  toggleLoadingVisibility();
 };

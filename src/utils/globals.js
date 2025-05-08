@@ -12,6 +12,7 @@ const elem = {
   appWrapper: select(".app-wrapper"),
   footerLink: select(".footer__icon"),
   footer: select(".footer"),
+  bodyLoadAnimation: select(".body__load-animation"),
 };
 
 const header = {
