@@ -48,26 +48,6 @@ const updateUnitsDisplay = () => {
   });
 };
 
-export default (data) => {
-  if (!data) return false;
-
-  const offsetDate = formatDateInTimezone(data.date, data.timezone);
-
-  // Update text values
-  global.header.descriptionString.textContent = getFormattedWeatherDate(offsetDate);
-  global.header.cityName.textContent = data.city;
-  global.header.cityInfo.textContent = data.description;
-  global.main.conditions.textContent = data.conditions;
-
-  updatePrimaryWeatherInfo(data);
-
-  updateSuntimeElements(data);
-
-  updateUnitsDisplay();
-
-  updateForecastItems(data);
-};
-
 const formatTimeHHMM = (timeString) => {
   return timeString?.split(":").slice(0, 2).join(":") || "";
 };
@@ -91,4 +71,24 @@ const updateForecastItems = (data) => {
 
     insertSVG(item, getSVG(hourData.icon));
   });
+};
+
+export default (data) => {
+  if (!data) return false;
+
+  const offsetDate = formatDateInTimezone(data.date, data.timezone);
+
+  // Update text values
+  global.header.descriptionString.textContent = getFormattedWeatherDate(offsetDate);
+  global.header.cityName.textContent = data.city;
+  global.header.cityInfo.textContent = data.description;
+  global.main.conditions.textContent = data.conditions;
+
+  updatePrimaryWeatherInfo(data);
+
+  updateSuntimeElements(data);
+
+  updateUnitsDisplay();
+
+  updateForecastItems(data);
 };
