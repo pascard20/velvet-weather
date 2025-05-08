@@ -10,6 +10,7 @@
 html,
 body {
   height: 100%;
+  position: relative;
 }
 
 body {
@@ -135,10 +136,9 @@ body::before {
   height: 4em;
   border-width: 5px;
   border-left-color: transparent;
-  position: absolute;
+  position: fixed;
   top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-self: center;
 }
 
 .header__form {
