@@ -1,7 +1,7 @@
-import global from "./globals.js";
-import { insertSVG, getSVG, initSVGLoader } from "./svgLoader";
+import global from "../utils/globals.js";
+import { setWeatherElementsVisibility } from "../utils/helpers.js";
+import { insertSVG, getSVG, initSVGLoader } from "./svgLoader.js";
 import printData from "./printData.js";
-import { setWeatherElementsVisibility } from "./helpers.js";
 import getWeatherData from "./getWeatherData.js";
 
 const loadInterfaceIcons = () => {
@@ -57,8 +57,6 @@ export default async () => {
     await initSVGLoader();
     loadInterfaceIcons();
 
-    setAppVisibility(true);
-
     const initialCity = selectRandomCity();
     const initialWeatherData = await getWeatherData(initialCity);
     if (initialWeatherData) {
@@ -71,4 +69,6 @@ export default async () => {
     console.error("Failed to initialize the app:", error);
     setWeatherElementsVisibility(false);
   }
+
+  setAppVisibility(true);
 };

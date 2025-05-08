@@ -4,9 +4,9 @@ const svgCache = {};
 // Dynamic webpack import contexts
 const svgImportContexts = [
   // eslint-disable-next-line no-undef
-  require.context("../svg/weather", false, /\.svg$/),
+  require.context("../../svg/weather", false, /\.svg$/),
   // eslint-disable-next-line no-undef
-  require.context("../svg/ui", false, /\.svg$/),
+  require.context("../../svg/ui", false, /\.svg$/),
 ];
 
 const getFilenameFromPath = (path) => {
@@ -23,9 +23,7 @@ const importAllSVGs = async () => {
       try {
         const svgContent = context(path);
         svgContents[iconName] =
-          typeof svgContent === "string"
-            ? svgContent
-            : svgContent.default || "";
+          typeof svgContent === "string" ? svgContent : svgContent.default || "";
       } catch (error) {
         console.error(`Error loading SVG ${iconName}:`, error);
       }

@@ -1,7 +1,7 @@
 import global from "./globals.js";
 import { format } from "date-fns";
 import { enUS } from "date-fns/locale";
-import { convertTemperature, convertSpeed } from "./utils";
+import { convertTemperature, convertSpeed } from "./utils.js";
 
 export const formatDateInTimezone = (date, timeZone) => {
   const dateString = date.toLocaleString("en-GB", {

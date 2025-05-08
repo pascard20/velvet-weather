@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 
+:root {
+  --transitionVeryShort: 0.08s;
+  --transitionShort: 0.15s;
+  --transitionLong: 0.7s;
+}
+
 html,
 body {
   height: 100%;
@@ -35,7 +41,7 @@ body::before {
 .header__city-info,
 .header__description {
   opacity: 1;
-  transition: 0.7s opacity;
+  transition: var(--transitionLong) opacity;
 
   &.inactive {
     opacity: 0;
@@ -46,7 +52,6 @@ body::before {
 .app-wrapper {
   max-width: 1024px;
   width: 100%;
-  /* height: 100%; */
   display: flex;
   flex-direction: column;
   padding: 2rem 2rem;
@@ -60,8 +65,8 @@ body::before {
   transform: translateY(1rem);
   opacity: 0;
   transition:
-    0.7s transform,
-    0.7s opacity;
+    var(--transitionLong) transform,
+    var(--transitionLong) opacity;
 
   &.active {
     transform: translateY(0);
@@ -119,8 +124,8 @@ body::before {
     margin-right: 0.25rem;
     margin-bottom: 0.25rem;
     opacity: 0;
-    animation: loadSpin 0.7s linear infinite;
-    transition: 0.1s;
+    animation: loadSpin var(--transitionLong) linear infinite;
+    transition: var(--transitionVeryShort);
 
     &.active {
       opacity: 0.8;
@@ -145,7 +150,7 @@ body::before {
     color: #513ff8;
     border-radius: 0.75rem;
     opacity: 0.9;
-    transition: 0.15s;
+    transition: var(--transitionShort);
 
     &:hover {
       opacity: 1;
@@ -168,7 +173,7 @@ body::before {
     position: absolute;
     top: 0;
     left: 0;
-    transition: 0.15s;
+    transition: var(--transitionShort);
     color: rgba(255, 255, 255, 0.5);
     cursor: text;
   }
@@ -179,7 +184,7 @@ body::before {
     border-color: rgba(255, 255, 255, 0.5);
     color: rgba(255, 255, 255, 0.8);
 
-    transition: 0.15s;
+    transition: var(--transitionShort);
     width: 18ch;
     background: none;
 
@@ -374,7 +379,7 @@ body::before {
   align-items: center;
   gap: 0.5rem;
   opacity: 0.7;
-  transition: 0.15s;
+  transition: var(--transitionShort);
   margin-top: 1rem;
 
   &:hover {
@@ -412,8 +417,8 @@ body::before {
   bottom: 0;
   background-color: white;
   color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: var(--transitionMedium);
+  transition: var(--transitionMedium);
 }
 
 .slider-inner {
@@ -428,8 +433,8 @@ body::before {
   left: 0.25em;
   bottom: calc(0.25em - 1px);
   background-color: #4f3def;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: var(--transitionMedium);
+  transition: var(--transitionMedium);
 }
 
 input:checked + .slider {
@@ -481,7 +486,7 @@ input:checked + .slider > .slider-inner {
   }
 
   a {
-    transition: 0.15s;
+    transition: var(--transitionShort);
   }
 
   a:hover {
@@ -491,8 +496,7 @@ input:checked + .slider > .slider-inner {
 }
 
 .footer__name {
-  transition: 0.1s;
-  /* margin-left: -0.675rem; */
+  transition: var(--transitionShort);
 }
 
 .footer__name:hover {
@@ -502,8 +506,7 @@ input:checked + .slider > .slider-inner {
 
 .footer__icon {
   font-size: 1.25rem;
-  transition: 0.25s;
-  transform: scale(1);
+  transition: var(--transitionShort);
   margin-bottom: -0.25rem;
   margin-left: 0.125rem;
 
@@ -511,28 +514,6 @@ input:checked + .slider > .slider-inner {
     width: 1em;
     height: 1em;
   }
-}
-
-.footer__icon:hover {
-  transform: scale(1.15);
-}
-
-/* ---------------------------------- UTILS --------------------------------- */
-
-.bolder {
-  font-weight: bolder;
-}
-
-.ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.no-select {
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 /* ------------------------------- ANIMATIONS ------------------------------- */

@@ -1,6 +1,6 @@
-import global from "./globals.js";
-import { insertSVG, getSVG } from "./svgLoader";
-import { formatDateInTimezone, getFormattedWeatherDate } from "./helpers";
+import global from "../utils/globals.js";
+import { formatDateInTimezone, getFormattedWeatherDate } from "../utils/helpers.js";
+import { insertSVG, getSVG } from "./svgLoader.js";
 
 const updatePrimaryWeatherInfo = (data) => {
   insertSVG(global.main.weatherIcon, getSVG(data.icon));

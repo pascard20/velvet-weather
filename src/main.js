@@ -1,10 +1,11 @@
-import "./reset.css";
-import "./style.css";
-import global from "./globals.js";
-import printData from "./printData.js";
-import initApp from "./initApp.js";
-import getWeatherData from "./getWeatherData.js";
-import { changeUnits } from "./helpers";
+import "./css/style.css";
+import "./css/reset.css";
+import "./css/utils.css";
+import global from "./utils/globals.js";
+import printData from "./func/printData.js";
+import initApp from "./func/initApp.js";
+import getWeatherData from "./func/getWeatherData.js";
+import { changeUnits } from "./utils/helpers.js";
 
 // Handlers
 const handleFormSubmit = async (event) => {
@@ -24,7 +25,7 @@ const handleUnitSwitch = (event) => {
 global.header.form.addEventListener("submit", handleFormSubmit);
 global.header.unitSwitch.addEventListener("click", handleUnitSwitch);
 
-// Init
+// Init app
 (async () => {
   await initApp();
 })();

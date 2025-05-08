@@ -1,5 +1,5 @@
-import global from "./globals.js";
-import { setWeatherElementsVisibility } from "./helpers";
+import global from "../utils/globals.js";
+import { setWeatherElementsVisibility } from "../utils/helpers.js";
 
 const setLoadingState = (isLoading) => {
   const action = isLoading ? "add" : "remove";
