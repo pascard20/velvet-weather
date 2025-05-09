@@ -4,10 +4,10 @@ Velvet Weather is a clean and easy-to-use web application for checking the weath
 
 ## Features
 
-* **Real-Time Weather Data**: Fetches accurate weather information using the [Visual Crossing Weather API](https://www.visualcrossing.com/).
+* **Real-Time Weather Data**: Fetches weather information using the [Visual Crossing Weather API](https://www.visualcrossing.com/).
 * **Dynamic Icons**: Dynamically loaded SVG icons for weather conditions and UI elements.
-* **Unit Switching**: Seamlessly toggle between metric and imperial units.
-* **Responsive Design**: Fully responsive layout that adapts to various screen sizes.
+* **Unit Switching**: Toggle between metric and imperial units.
+* **Responsive Design**: Responsive layout that adapts to various screen sizes.
 * **Interactive UI**: Smooth animations and transitions.
 
 ## Live Preview
